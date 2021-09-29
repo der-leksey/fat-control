@@ -43,7 +43,7 @@ const App = {
         }
     },
     created() {
-        fetch('/api.php', { mode: 'no-cors' })
+        fetch('http://h95313ly.beget.tech/read.php', { mode: 'no-cors' })
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
