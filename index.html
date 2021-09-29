@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fat Control</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://releases.jquery.com/git/jquery-3.x-git.min.js"></script>
+
+
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1>FAT control</h1>
+    </header>
+
+    <main id="app">
+
+
+        <input v-model="date" type="date">
+        {{ date }}
+
+        <h2>Дневник</h2>
+        <form @submit.prevent="add()" class="add-form">
+
+            <label class="field">
+                <input v-model="addForm.name" type="text" placeholder=" " required>
+                <div class="field-label">Название</div>
+            </label>
+            
+            <br>
+
+            <div>
+                <label>
+                    <input v-model="addForm.measure" type="radio" value="1">
+                    порция
+                </label>
+                <label>
+                    <input v-model="addForm.measure" type="radio" value="2">
+                    грамм
+                </label>
+            </div>
+
+            <br>
+
+            <div class="fc-cols">
+                <label class="field">
+                    <input v-model="addForm.kcal" type="number" placeholder=" " required>
+                    <div class="field-label">Калорийность на 100 г</div>
+                </label>
+       
+
+                <label v-if="addForm.measure == 1" class="field">
+                    <input v-model="addForm.portion" type="number" placeholder=" " required>
+                    <div class="field-label">Г в порции</div>
+                </label>
+    
+                <label class="field">
+                    <input v-model="addForm.qty" type="number" placeholder="Кол-во" required>
+                    <div class="field-label">
+                        <span v-if="addForm.measure == 1">Кол-во порций</span>
+                        <span v-if="addForm.measure == 2">Грамм</span>
+                    </div>
+                </label>
+            </div>
+
+            <div class="fc-sb">
+                <div class="add-sum">
+                    {{ addKcal }}
+                </div>
+                <button>+ Добавить</button>
+            </div>
+        </form>
+
+        <div>
+            {{ diary }}
+        </div>
+
+        <section v-for="item in diary" class="list-item">
+            <header class="fc-sb">
+                <h3 class="list-title">{{ item.name }}</h3>
+                
+                <div class="">
+                    <time>{{ item.time }}</time>
+                    <button>+</button>
+                    <button>×</button>
+                </div>
+            </header>
+            <main>
+                <div class="fc-sb">
+                    <div>{{ item.kcal }} kcal</div>
+                    <div>× {{ item.qty }} qty</div>
+                </div>
+            </main>
+        </section>
+
+
+        
+
+    </main>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>

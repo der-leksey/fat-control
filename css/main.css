@@ -1,0 +1,84 @@
+:root {
+    font-family: sans;
+    background-color: rgb(43, 43, 43);
+    color: #fff;
+    font-family: 'Comfortaa', cursive;
+    line-height: 1;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    max-width: 768px;
+    margin: 0 auto;
+}
+
+
+.fc-sb {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.fc-cols {
+    display: flex;
+    margin: 0 -1rem;
+}
+.fc-cols > * {
+    flex: 1;
+    margin: 0 1rem;
+}
+
+
+.field {
+    position: relative;
+    display: block;
+}
+.field input {
+    height: 50px;
+    width: 100%;
+    padding: 0 1rem;
+    background-color: rgba(0,0,0,.2);
+    color: #fff;
+    border: none;
+    border-radius: 1rem;
+    font-size: inherit;
+    font-family: inherit;
+}
+.field-label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 50px;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+}
+.field input:not(:placeholder-shown) {
+    padding-top: .75rem;
+}
+.field input:not(:placeholder-shown) ~ .field-label {
+    top: -.75rem;
+    font-size: 0.6em;
+}
+
+.add-form {
+    margin-bottom: 1rem;
+}
+.add-sum {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+}
+
+
+.list-item {
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,.2);
+    background-color: rgba(0,0,0,.05);
+}
+.list-title {
+    margin: 0 0 0.5rem;
+    font-size: 1.125rem;
+}
